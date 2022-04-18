@@ -1,11 +1,3 @@
-//============================================================================
-// Name        : DSALAssg5.cpp
-// Author      : 
-// Version     :
-// Copyright   : Your copyright notice
-// Description : DSAL Assignment 5 in C++, Ansi-style
-//============================================================================
-
 #include <iostream>
 using namespace std;
 
@@ -138,12 +130,12 @@ linkedlist :: ~linkedlist(){
 		t = p;
 		p = p->next;
 		delete t;
-	} 
+	}
 }
 
 //Open Hash table
 class Hash{
-	linkedlist* hashArr[20];
+	linkedlist* hashArr[26];
 	public:
 	Hash();
 	int hashVal(string);
@@ -155,7 +147,7 @@ class Hash{
 };
 
 Hash :: Hash(){
-	for(int i = 0; i<20; i++)
+	for(int i = 0; i<26; i++)
 		hashArr[i] = nullptr;
 }
 
@@ -208,7 +200,7 @@ void Hash :: insertKey(string key, string meaning){
 }
 
 void Hash :: display(){
-	for(int i = 0; i < 20; i++){
+	for(int i = 0; i < 26; i++){
 		if(hashArr[i]){
 			hashArr[i]->display();
 			cout<<endl;
@@ -233,7 +225,7 @@ void Hash :: deleteKey(string key){
 }
 
 Hash :: ~Hash(){
-	for(int i =0; i < 20; i++)
+	for(int i =0; i < 26; i++)
 		delete hashArr[i];
 }
 
@@ -280,14 +272,14 @@ int main() {
 				}
 				else if(m == "0"){
 					cout<<endl;
-					cout<<"Invalid Key"<<endl;	
+					cout<<"Invalid Key"<<endl;
 				}
 				else{
 					cout<<endl;
-					cout<<"Meaning of "<<"'"<<k<<"'"<<" is: "<<m;				            	
+					cout<<"Meaning of "<<"'"<<k<<"'"<<" is: "<<m;
 
 				}
-                break;				
+                break;
             }
             case 4:{
                 //Delete Key
@@ -318,20 +310,15 @@ int main() {
 
 /*
 OUTPUT:
-
 MENU:
 1. Insert New Key
 2. Display Complete Dictionary
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: apple
-
 Enter meaning: fruit
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -339,13 +326,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: aurangabad
-
 Enter meaning: city
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -353,13 +336,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: best
-
 Enter meaning: adjective
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -367,13 +346,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: cat
-
 Enter meaning: animal
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -381,13 +356,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: digvijay
-
 Enter meaning: human
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -395,13 +366,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: eagle
-
 Enter meaning: bird
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -409,27 +376,19 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 1
-
 Enter Key: fish
-
 Enter meaning: seafood
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
 2. Display Complete Dictionary
 3. Search Key
 4. Delete Key
-Enter menu: 1   
-
+Enter menu: 1
 Enter Key: goat
-
 Enter meaning: animal
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -437,7 +396,6 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 2
-
 Complete Dictionary is:
 (apple :fruit), (aurangabad :city)
 (best :adjective)
@@ -446,9 +404,7 @@ Complete Dictionary is:
 (eagle :bird)
 (fish :seafood)
 (goat :animal)
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -456,12 +412,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 3
-
 Enter Key to be Searched: eagle
-
 Meaning of 'eagle' is: bird
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -469,13 +422,9 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 3
-
 Enter Key to be Searched: mom
-
 Key not found
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -483,11 +432,8 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 4
-
 Enter Key to be Deleted: apple
-
 Do want to continue:?('y'/'n')-> y
-
 ------------------------------------------------
 MENU:
 1. Insert New Key
@@ -495,7 +441,6 @@ MENU:
 3. Search Key
 4. Delete Key
 Enter menu: 2
-
 Complete Dictionary is:
 (aurangabad :city)
 (best :adjective)
@@ -504,8 +449,6 @@ Complete Dictionary is:
 (eagle :bird)
 (fish :seafood)
 (goat :animal)
-
 Do want to continue:?('y'/'n')-> n
-
 ------------------------------------------------
 */
