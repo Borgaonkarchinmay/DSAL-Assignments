@@ -487,3 +487,49 @@ int main(){
     
     return 0;
 }
+
+/*
+Output:
+Enter data of root node: 1
+
+Enter lchild data of '1' : 2
+
+Enter rchild data of '1' : 3
+
+Enter lchild data of '2' : 4
+
+Enter rchild data of '2' : 5
+
+Enter lchild data of '3' : 6
+
+Enter rchild data of '3' : 7
+
+Enter lchild data of '4' : -1
+
+Enter rchild data of '4' : -1
+
+Enter lchild data of '5' : -1
+
+Enter rchild data of '5' : -1
+
+Enter lchild data of '6' : -1
+
+Enter rchild data of '6' : -1
+
+Enter lchild data of '7' : -1
+
+Enter rchild data of '7' : -1
+
+PreOrder traversal-
+1 2 4 5 3 6 7
+Number of internal nodes: 3
+Number of leaf nodes: 4
+Height of tree: 2
+
+After mirroring the tree-
+PreOrder traversal-
+1 3 7 6 2 5 4 
+
+Copied tree is-
+1 3 7 6 2 5 4
+*/
