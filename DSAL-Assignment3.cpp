@@ -168,3 +168,12 @@ int main(){
     cout<<endl;
     return 0;
 }
+
+/*
+Output:
+Inorder- 
+2 4 6 8 12 17 21 26 
+
+Preorder- 
+12 8 4 2 6 21 17 26 
+*/
