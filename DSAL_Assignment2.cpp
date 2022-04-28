@@ -306,3 +306,173 @@ int main(){
     }
     return 0;
 }
+
+/*
+Output:
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 1
+Enter key: ajinkya
+
+Enter meaning: human
+
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 1
+Enter key: aeroplane
+
+Enter meaning: vehicle
+
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 1
+Enter key: mathematics
+
+Enter meaning: subject
+
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 1
+Enter key: bat
+
+Enter meaning: toy
+
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 3
+Keys in ascending order
+(Key: aeroplane ->meaning: vehicle)
+(Key: ajinkya ->meaning: human)
+(Key: bat ->meaning: toy)
+(Key: mathematics ->meaning: subject)
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 4
+Keys in descending order
+(Key: mathematics ->meaning: subject)
+(Key: bat ->meaning: toy)
+(Key: ajinkya ->meaning: human)
+(Key: aeroplane ->meaning: vehicle)
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 5
+Enter key: mathematics
+Number of comparisons for mathematics: 2
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 6
+Enter key to search: bat
+key- bat : meaning- toy
+
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 7
+Enter key: aeroplane
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Add word
+2. Update word
+3. Display words in ascending order
+4. Display words in descending order
+5. Comparison count
+6. Search key
+7. Delete word
+Enter menu: 3
+Keys in ascending order
+(Key: ajinkya ->meaning: human)
+(Key: bat ->meaning: toy)
+(Key: mathematics ->meaning: subject)
+
+Do want to continue:?('y'/'n')-> n
+
+------------------------------------------------
+*/
