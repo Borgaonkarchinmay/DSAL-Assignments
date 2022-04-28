@@ -267,3 +267,90 @@ int main() {
 
 	return 0;
 }
+
+/*
+Output:
+MENU:
+1. Insert new client details
+2. Update client details
+3. Display client records
+4. Search client details
+Enter menu: 1
+1. With replacement
+2. Without replacement
+Enter method of insertion: 2
+Enter client ID: 26
+
+Enter client Name: arnav
+
+Enter client Telephone No: 123
+Record stored successfully.
+
+Do you want to continue insertion:?('y'/'n')-> y
+Enter client ID: 45
+
+Enter client Name: chinmay
+
+Enter client Telephone No: 789
+Record stored successfully.
+
+Do you want to continue insertion:?('y'/'n')-> y
+Enter client ID: 55
+
+Enter client Name: shreyash
+
+Enter client Telephone No: 753
+Record stored successfully.
+
+Do you want to continue insertion:?('y'/'n')-> n
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Insert new client details
+2. Update client details
+3. Display client records
+4. Search client details
+Enter menu: 3
+(ID: 45,Name: chinmay,Telephone No: 789)
+(ID: 26,Name: arnav,Telephone No: 123)
+(ID: 55,Name: shreyash,Telephone No: 753)
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Insert new client details
+2. Update client details
+3. Display client records
+4. Search client details
+Enter menu: 2
+
+Enter ID of client: 55          
+Enter new clients details-
+Re-enter name of client: Aditya
+
+Re-enter telephone of client: 951
+
+Client details updated successfully
+
+Do want to continue:?('y'/'n')-> y
+
+------------------------------------------------
+MENU:
+1. Insert new client details
+2. Update client details
+3. Display client records
+4. Search client details
+Enter menu: 4
+
+Enter ID of client: 55
+Clients details are:  (ID: 55,Name: Aditya,Telephone No: 951)
+
+Record fetched in: 3 comparisons.
+
+Do want to continue:?('y'/'n')-> n
+
+------------------------------------------------
+*/
