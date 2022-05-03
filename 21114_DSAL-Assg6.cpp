@@ -241,18 +241,22 @@ Queue :: ~Queue(){
 }
 
 
+//Class Graph
 class graph{
     linkedlist* grp;
-	int edg;
+	string* places;
 	int ver;
 	public:
-	graph(){grp = nullptr; ver = 0; edg = 0;}
+	graph(){grp = nullptr; ver = 0; places = nullptr;}
 	void insertGraph(int, int);
 	void initializeGraph();
 	void displayGraph();
 	void storeGraph();
+    void bfsTrav();
+    void dfsTrav();
 	void bfsGraph(int);
 	void dfsGraph(int);
+    int getNode(string);
 	~graph();
 };
 
@@ -263,6 +267,18 @@ void graph :: initializeGraph(){
 	cin>>ver;
 
 	grp = new linkedlist[ver];
+
+    //Allocate memory to places array
+    places = new string[ver];
+
+    //Associatte places names with integral
+    cout<<"Enter list of place- "<<endl;
+	string place;
+    for(int i = 0; i < ver; i++){
+        cout<<"Enter place: ";
+        cin>>place;
+        places[i] = place;
+    }
 }
 
 void graph :: insertGraph(int src, int des){
@@ -278,13 +294,15 @@ void graph :: insertGraph(int src, int des){
 
 void graph ::storeGraph(){
 	cout<<endl;
+	int src=0, des=0;
+	string place1, place2;
 	char chc = 'y';
 	while(chc == 'y' && chc != 'n'){
-		int src=0, des=0;
-		cout<<"Enter source and destination respectively: ";
-		cin>>src>>des;
+		cout<<"Enter source place and destination place respectively: ";
+		cin>>place1>>place2;
+		src = getNode(place1);
+		des = getNode(place2);
 		insertGraph(src, des);
-		cout<<endl;
 		cout<<"want to continue ?(y/n): ";
 		cin>>chc;
 		cout<<endl;
@@ -294,7 +312,7 @@ void graph ::storeGraph(){
 void graph :: bfsGraph(int v){
 	Queue explore;
 	int vis[ver] = {0};
-	cout<<v;
+	cout<<places[v];
 	vis[v] = 1;
 	explore.enqueue(v);
 
@@ -303,7 +321,7 @@ void graph :: bfsGraph(int v){
 		int vertex = explore.dequeue();
 		for(Node* p = grp[vertex].getHead(); p != nullptr; p = p->next){
 			if(vis[p->node] == 0){
-				cout<<", "<<p->node;
+				cout<<", "<<places[p->node];
 				vis[p->node] = 1;
 				explore.enqueue(p->node);
 			}
@@ -314,6 +332,7 @@ void graph :: bfsGraph(int v){
 graph :: ~graph(){
 	//Delete the array of linked list objects
 	delete []grp;
+    delete []places;
 }
 
 void graph ::displayGraph(){
@@ -328,12 +347,34 @@ void graph ::displayGraph(){
 void graph :: dfsGraph(int v){
 	static int vis[20] = {0};
 	if(vis[v] != 1){
-		cout<<v<<"  ";
+		cout<<places[v]<<"  ";
 		vis[v] = 1;
 		for(Node* p = grp[v].getHead(); p != nullptr; p = p->next)
 			dfsGraph(p->node);
 	}
 }
+
+int graph :: getNode(string p){
+    for(int i = 0; i < ver; i++){
+        if(places[i] == p)
+            return i;
+    }
+}
+
+void graph :: bfsTrav(){
+    string place;
+	cout<<"Enter starting places: ";
+	cin>>place;
+	bfsGraph(getNode(place));
+}
+
+void graph :: dfsTrav(){
+    string place;
+	cout<<"Enter starting places: ";
+	cin>>place;
+	dfsGraph(getNode(place));
+}
+
 
 int main(){
 
@@ -344,9 +385,53 @@ int main(){
 	map.displayGraph();
 	cout<<endl;
 	cout<<"BFS of graph- "<<endl;
-	map.bfsGraph(0);
+	map.bfsTrav();
 	cout<<endl;
 	cout<<"DFS of graph- "<<endl;
-	map.dfsGraph(0);
+	map.dfsTrav();
     return 0;
 }
+
+/*
+Output:
+
+Enter the no of vertices in Graph: 5
+Enter list of place- 
+Enter place: swarget
+Enter place: narhe
+Enter place: pict
+Enter place: katraj
+Enter place: kothrud
+
+Enter source place and destination place respectively: swarget narhe
+want to continue ?(y/n): y
+
+Enter source place and destination place respectively: swarget pict
+want to continue ?(y/n): y
+
+Enter source place and destination place respectively: narhe katraj
+want to continue ?(y/n): y
+
+Enter source place and destination place respectively: narhe kothrud
+want to continue ?(y/n): y
+
+Enter source place and destination place respectively: pict katraj
+want to continue ?(y/n): y
+
+Enter source place and destination place respectively: katraj kothrud
+want to continue ?(y/n): n
+
+
+0: 2, 1
+1: 4, 3
+2: 3
+3: 4
+4:
+
+BFS of graph-
+Enter starting places: swarget
+swarget, pict, narhe, katraj, kothrud
+DFS of graph-
+Enter starting places: pict
+pict  katraj  kothrud  
+*/
