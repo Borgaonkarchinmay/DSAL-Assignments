@@ -354,11 +354,15 @@ void graph :: dfsGraph(int v){
 	}
 }
 
-int graph :: getNode(string p){
-    for(int i = 0; i < ver; i++){
-        if(places[i] == p)
-            return i;
+int graph :: getNode(string c){
+    int index = 0;
+	for(int i = 0; i < ver; i++){
+        if(places[i] == c){
+        	index = i;
+        	break;
+        }
     }
+    return index;
 }
 
 void graph :: bfsTrav(){
@@ -394,44 +398,34 @@ int main(){
 
 /*
 Output:
-
 Enter the no of vertices in Graph: 5
-Enter list of place- 
+Enter list of place-
 Enter place: swarget
 Enter place: narhe
 Enter place: pict
 Enter place: katraj
 Enter place: kothrud
-
 Enter source place and destination place respectively: swarget narhe
 want to continue ?(y/n): y
-
 Enter source place and destination place respectively: swarget pict
 want to continue ?(y/n): y
-
 Enter source place and destination place respectively: narhe katraj
 want to continue ?(y/n): y
-
 Enter source place and destination place respectively: narhe kothrud
 want to continue ?(y/n): y
-
 Enter source place and destination place respectively: pict katraj
 want to continue ?(y/n): y
-
 Enter source place and destination place respectively: katraj kothrud
 want to continue ?(y/n): n
-
-
 0: 2, 1
 1: 4, 3
 2: 3
 3: 4
 4:
-
 BFS of graph-
 Enter starting places: swarget
 swarget, pict, narhe, katraj, kothrud
 DFS of graph-
 Enter starting places: pict
-pict  katraj  kothrud  
+pict  katraj  kothrud
 */
