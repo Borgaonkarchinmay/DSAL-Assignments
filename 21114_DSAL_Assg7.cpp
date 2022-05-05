@@ -8,6 +8,7 @@ class graph{
     string* cities;
 public:
     graph();
+    graph(int);
     void initializeGraph();
     void storeGraph();
     void insertGraph(int, int, int);
@@ -16,13 +17,35 @@ public:
     int getNode(string);
     void display();
     ~graph();
-    
+
 };
 
 graph :: graph(){
     grp = nullptr;
     cities = nullptr;
     ver = 0;
+}
+
+graph :: graph(int v){
+	grp = nullptr;
+	cities = nullptr;
+	ver = v;
+
+	//Allocate memory to graph
+	grp = new int*[ver];
+    for(int i = 0; i < ver; i++){
+    	grp[i] = new int[ver];
+    }
+
+    //Allocate memory to cities array
+    cities = new string[ver];
+
+    //Initialize all values to infinity
+    for(int i = 0; i < ver; i++){
+    	for(int j = 0; j < ver; j++){
+    		grp[i][j] = infinity;
+    	}
+    }
 }
 
 void graph :: storeGraph(){
@@ -69,7 +92,7 @@ void graph :: initializeGraph(){
     for(int i = 0; i < ver; i++){
         for(int j = 0; j < ver; j++){
             grp[i][j] = infinity;
-        }   
+        }
     }
 
     //Associatte city names with integral
@@ -91,29 +114,33 @@ void graph :: display(){
                 cout<<grp[i][j]<<" ";
             }
         }
-        cout<<endl;   
+        cout<<endl;
     }
 }
 
 void graph :: prims(int olde){
     //Initialization
-    
+
     int near[ver]; //near array
     int mst[2][ver - 1]; //result minimum spanning tree
     int newe = 0, min_cost = 0;
-    
+    graph minGrp(ver);
+
     //find the closest vertex to given vertex (old)
     for(int i = 0; i < ver; i++){
         if(grp[olde][i] < grp[olde][newe]){
-            newe = i; 
+            newe = i;
         }
     }
-    
+
     //Add first edge in mst
     mst[0][0] = newe;
     mst[1][0] = olde;
-    near[newe] = near[olde] = -1;
     min_cost = grp[mst[0][0]][mst[1][0]];
+    minGrp.insertGraph(olde, newe, grp[mst[0][0]][mst[1][0]]);
+    minGrp.insertGraph(newe, olde, grp[mst[0][0]][mst[1][0]]);
+    near[newe] = near[olde] = -1;
+
 
     //Manipulate near array
     for(int i = 0; i < ver; i++){
@@ -125,7 +152,7 @@ void graph :: prims(int olde){
             else
                 near[i] = newe;
         }
-    }    
+    }
     //----------------------------------
 
     //Repeating
@@ -145,6 +172,8 @@ void graph :: prims(int olde){
         mst[0][count] = newe;
         mst[1][count] = near[newe];
         min_cost += grp[mst[0][count]][mst[1][count]];
+        minGrp.insertGraph(newe, near[newe], cost);
+        minGrp.insertGraph(near[newe], newe, cost);
         near[newe] = -1;
 
         //Manipulate near array
@@ -157,12 +186,17 @@ void graph :: prims(int olde){
                 else
                     near[i] = newe;
             }
-        }   
+        }
     }
 
     //Display found tree
-    
     cout<<endl;
+    cout<<"Minimum cost tree is- "<<endl;
+    minGrp.display();
+
+
+    cout<<endl;
+    cout<<"Cities to be connected will be-"<<endl;
     for(int i = 0; i < ver - 1; i++){
         cout<<cities[mst[0][i]]<<" : "<<cities[mst[1][i]]<<endl;
     }
@@ -170,10 +204,14 @@ void graph :: prims(int olde){
 }
 
 int graph :: getNode(string c){
-    for(int i = 0; i < ver; i++){
-        if(cities[i] == c)
-            return i;
+    int index = 0;
+	for(int i = 0; i < ver; i++){
+        if(cities[i] == c){
+        	index = i;
+        	break;
+        }
     }
+    return index;
 }
 
 graph :: ~graph(){
@@ -198,9 +236,7 @@ int main(){
     o1.prims(0);
     return 0;
 }
-
 /*
-
 Number of cities to be connected: 5
 Enter list of cities- 
 Enter city: akola
@@ -234,13 +270,21 @@ Enter cost of connection: 15
 Do you want to continue ('y'/'n')? : n
 
 
-- 18 1 - -
-18 - - 7 4
-1 - - 26 -
-- 7 26 - 15
-- 4 - 15 -
-Minimum spanning tree is-
+- 18 1 - - 
+18 - - 7 4 
+1 - - 26 - 
+- 7 26 - 15 
+- 4 - 15 - 
+Minimum spanning tree is- 
 
+Minimum cost tree is- 
+- 18 1 - - 
+18 - - 7 4 
+1 - - - - 
+- 7 - - - 
+- 4 - - - 
+
+Cities to be connected will be-
 jalgaon : akola
 latur : akola
 mumbai : latur
