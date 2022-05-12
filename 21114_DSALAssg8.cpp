@@ -226,9 +226,9 @@ void graph :: topoSort(){
                 if(grp[node][i] == 1){
                     indeg[i] -= 1;
                     grp[node][i] = 0;
-                }
                 if(indeg[i] == 0)
                     temp.enqueue(i);
+		}
             }
         
     }
